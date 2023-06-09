@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -22,5 +23,12 @@ class UserController extends Controller
             Log::error('Error adding user: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Error adding user');
         }
+    }
+
+    public function index()
+    {
+        $users = User::all();
+
+        return view('users.index', compact('users'));
     }
 }
